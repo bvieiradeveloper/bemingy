@@ -48,14 +48,18 @@ grid-template-columns: 1fr 1fr;
 gap: 0.5rem;
 
 transition: border-color 0.2s;
-button{
-    height: 4rem;
+`
+interface RadioButtonProps{
+    isActive: boolean;
+}
+export const RadioButton = styled.button<RadioButtonProps>`
+ height: 4rem;
     border-radius: 0.25rem;
     border: 1px solid #d7d7d7;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: transparent;
+    background: ${ props => props.isActive ? 'red' : 'transparent'};
 
     img{
         width: 20px;
@@ -72,6 +76,4 @@ button{
     &:hover{
         border-color: ${darken(0.5, '#d7d7d7')};
     }
-}
-
 `
