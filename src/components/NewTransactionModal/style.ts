@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {darken} from "polished";
 
 export const Container = styled.form`
     display: flex;
@@ -38,4 +39,39 @@ export const Container = styled.form`
         background: var(--green);
         height: 4rem;
     }
+`
+
+export const TransactionTypeContainer = styled.div`
+margin: 1rem 0;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 0.5rem;
+
+transition: border-color 0.2s;
+button{
+    height: 4rem;
+    border-radius: 0.25rem;
+    border: 1px solid #d7d7d7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+
+    img{
+        width: 20px;
+        height: 20px;
+    }
+
+    span{
+        display: inline-block;
+        margin-left: 1rem;
+        font-size: 1rem;
+        color:var(--text-title);
+    }
+
+    &:hover{
+        border-color: ${darken(0.5, '#d7d7d7')};
+    }
+}
+
 `
