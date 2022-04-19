@@ -1,3 +1,6 @@
-import style from "styled-components"
+import styled from "styled-components";
 
-export const Container = style.div``
+export const Container = styled.form`
+display: flex;
+    flex-direction: column;
+`
