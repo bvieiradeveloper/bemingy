@@ -3,9 +3,8 @@ import { Container,TransactionTypeContainer, RadioButton } from "./style";
 import closeImage from "../../assets/close.svg";
 import incomeImage from "../../assets/income.svg";
 import outcomeImage from "../../assets/outcome.svg";
-import { FormEvent, useContext, useState } from "react";
-import { api } from "../../services/Api";
-import { TransactionsContext } from "../../TransactionsContext";
+import { FormEvent, useState } from "react";
+import { useTransactions } from "../../hooks/useTransactions";
 
 interface NewTransactionOpenModalProps{
   isOpen: boolean,
@@ -18,7 +17,7 @@ export function NewTransactionOpenModal ({isOpen, onRequestClose}: NewTransactio
   const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState('');
   const [type, setType] = useState('deposit');
-  const { createTransaction } = useContext(TransactionsContext);
+  const { createTransaction } = useTransactions();
   function handleCreateNewTransaction(event: FormEvent){
     event.preventDefault();
     createTransaction({
@@ -32,7 +31,7 @@ export function NewTransactionOpenModal ({isOpen, onRequestClose}: NewTransactio
     setAmount(0);
     setCategory('');
     setType('deposit');
-    
+
     onRequestClose();
   }
   return (
@@ -86,3 +85,7 @@ export function NewTransactionOpenModal ({isOpen, onRequestClose}: NewTransactio
     </>
   );
 } 
+
+function TransactionsContext(TransactionsContext: any): { createTransaction: any; } {
+  throw new Error("Function not implemented.");
+}
